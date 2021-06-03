@@ -1,0 +1,88 @@
+  
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Limited Edition</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset='utf-8'>
+	
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/style.css'%}">
+
+</head>
+<body>
+
+	<div id="content-wrapper">
+  <div class="column">
+  <img id="featured" src="{% static 'images/L2.jpg'%}" class="rounded float-start"height="350px" width="350px" alt="">
+			<div id="slide-wrapper" >
+				<img id="slideLeft" class="arrow" src="{% static 'images/arrow-left.png'%}">
+
+				<div id="slider">
+					{% for shoes in limiteds %}
+          <img class="thumbnail" src="{{ MEDIA_URL }}{{ shoes.image }}" >
+
+          
+        
+       {% endfor %}
+				</div>
+
+				<img id="slideRight" class="arrow" src="{% static 'images/arrow-right.png'%}">
+			</div>
+		</div>
+
+		<div class="column">
+			<h1 style="color:darkcyan">Limited Edition Coming Soon</h1>
+			<hr>
+
+			<h3 style="color:brown">Prices vary from 200 DT. to 800 DT. </h3>
+			<h2>Description</h2>
+			<strong>Get the best deals of Limited Edition sneakers of all brands From the first Jordan to the latest Off White: you'll find the hottest models of the moment. Collabs with artists and designers, original colorways, special seasonal designs... Browse our 'limited edition' section and take up the challenge to expand your collection. Blink and you'll miss it! .</strong>
+</br>
+			<a href="/store" button type="submit" class="btn btn-danger" > Back </a></button>
+			<a href="/LimitedEdition" button type="submit" class="btn btn-dark">Learn More >></a></button>
+		</div>
+		
+	</div>
+	
+
+	<script type="text/javascript">
+		let thumbnails = document.getElementsByClassName('thumbnail')
+
+		let activeImages = document.getElementsByClassName('active')
+
+		for (var i=0; i < thumbnails.length; i++){
+
+			thumbnails[i].addEventListener('mouseover', function(){
+				console.log(activeImages)
+				
+				if (activeImages.length > 0){
+					activeImages[0].classList.remove('active')
+				}
+				
+
+				this.classList.add('active')
+				document.getElementById('featured').src = this.src
+			})
+		}
+
+
+		let buttonRight = document.getElementById('slideRight');
+		let buttonLeft = document.getElementById('slideLeft');
+
+		buttonLeft.addEventListener('click', function(){
+			document.getElementById('slider').scrollLeft -= 180
+		})
+
+		buttonRight.addEventListener('click', function(){
+			document.getElementById('slider').scrollLeft += 180
+		})
+
+
+	</script>
+
+</body>
+</html>

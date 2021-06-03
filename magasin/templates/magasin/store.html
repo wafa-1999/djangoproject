@@ -1,0 +1,32 @@
+{% extends 'magasin/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container h-100">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 bg-light text-right">
+		 <strong> coming soon</strong>
+            <a href="/Produit" button type="submit" class="btn btn-dark my-2 my-sm-0" >Check more>></a></button>
+        </div>
+    </div>
+</div>
+	<div class="row">
+		{% for produit in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{ MEDIA_URL }}{{ produit.img }}">
+			<div class="box-element produit">
+				<h6><strong>{{produit.libelle}}</strong></h6>
+				
+				<hr>
+
+				<button data-produit="{{produit.id}}" data-action="add" class="btn btn-danger add-btn update-cart">Add to Cart</button>
+				
+				
+				<h4 style="display: inline-block; float: right"><strong>{{produit.prix}}DT</strong></h4>
+
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock content %}

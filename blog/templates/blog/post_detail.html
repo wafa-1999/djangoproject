@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+{%load static%}
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}">
+	</head>
+
+{% block content %}
+<div class="container">
+  <div class="row align-items-start">
+    
+  
+    <div class="col">
+<h2 class="subtitle">Add comment</h2>
+	<form method="post" action=".">
+		{% csrf_token %}
+
+		{{ form.as_p }}
+
+		<div class="field">
+			<div class="control">
+				<button class="btn btn-dark" onclick="myFunction()">Submit</button>
+				
+			</div>
+			
+		</div>
+	</form>
+
+    {% for comment in post.comments.all %}
+
+	<article class="media">
+		<div class="media-content">
+			<div class="content">
+				<p>
+					<strong>{{ comment.name }}</strong> <small>{{ comment.date_added|timesince }} ago</small>
+					<br>
+					{{ comment.body }}
+				</p>
+			</div>
+			
+		</div>
+	</article>
+
+{% endfor %}
+</div>
+<div class="col" >
+    <img src="{% static 'images/thank.jpg' %}" style="height:500px;">
+  </div>
+		</div>
+	</div>	
+	
+    <script type="text/javascript" src="{% static 'js/post_detail.js' %}"></script>
+{% endblock %}
+</html>

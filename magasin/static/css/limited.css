@@ -1,0 +1,27 @@
+.picture {
+    width: 300px;
+    border-style:dashed;
+    height: 200px;
+    border-color:crimson;
+}
+.item-title{
+    position:relative;
+    margin-top: 10px;
+    right:250px;
+    color:darkslateblue;
+    
+}
+.title{
+    text-align: center;
+    margin: 20px;
+    color: #275272;
+}
+.btn-danger {
+    margin: 10px;
+}
+.topnav-right {
+    float: right;
+  }
+.item-title{
+    text-align:right;
+}
